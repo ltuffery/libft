@@ -6,7 +6,7 @@
 /*   By: ltuffery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:20:22 by ltuffery          #+#    #+#             */
-/*   Updated: 2022/09/29 11:00:39 by ltuffery         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:02:15 by ltuffery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	i = 0;
 	if (size == 0)
 		return (src_len);
-	if (src_len > size)
+	if (src_len >= size)
 		size_selected = size - 1;
 	else
 		size_selected = src_len;

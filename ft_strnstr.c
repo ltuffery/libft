@@ -6,21 +6,11 @@
 /*   By: ltuffery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:56:13 by ltuffery          #+#    #+#             */
-/*   Updated: 2022/09/28 19:29:18 by ltuffery         ###   ########.fr       */
+/*   Updated: 2022/10/01 01:07:41 by ltuffery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-static size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
@@ -32,20 +22,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	little_len = ft_strlen(little);
 	if (little_len == 0)
 		return ((char *) big);
-	while (i < len)
+	while (i < len && big[i] != '\0')
 	{
-		if (big[i] == little[0])
-		{
-			j = 0;
-			while (big[i + j] && little[j])
-			{
-				if (little[j] != big[i + j])
-					break ;
-				j++;
-			}
-			if (little[j] == '\0' && (j < len || big[j] == '\0'))
-				return ((char *) &big[i]);
-		}
+		j = 0;
+		while (j + i < len && big[i + j] == little[j] && little[j] != '\0')
+			j++;
+		if (little[j] == '\0')
+			return ((char *) &big[i]);
 		i++;
 	}
 	return (NULL);

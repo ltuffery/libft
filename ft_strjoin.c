@@ -6,7 +6,7 @@
 /*   By: ltuffery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 11:48:15 by ltuffery          #+#    #+#             */
-/*   Updated: 2022/09/29 13:38:29 by ltuffery         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:29:37 by ltuffery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	new_str = malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (new_str == NULL)
 		return (NULL);
-	ft_strlcpy(new_str, s1, s1_len);
+	ft_strlcpy(new_str, s1, s1_len + 1);
 	while (i < s2_len)
 	{
 		new_str[s1_len + i] = s2[i];
