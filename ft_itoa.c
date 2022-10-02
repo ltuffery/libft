@@ -6,7 +6,7 @@
 /*   By: ltuffery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:34:29 by ltuffery          #+#    #+#             */
-/*   Updated: 2022/09/30 19:27:36 by ltuffery         ###   ########.fr       */
+/*   Updated: 2022/10/02 21:57:18 by ltuffery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*ft_swap(char *tab)
 	{
 		tmp = tab[i];
 		tab[i] = tab[len - i - 1];
-		tab[len - i -1] = tmp;
+		tab[len - i - 1] = tmp;
 		i++;
 	}
 	return (tab);
@@ -53,6 +53,11 @@ static char	*ft_swap(char *tab)
 
 static int	ft_insert_nb(char *tab, long long n, int i)
 {
+	if (n == 0)
+	{
+		tab[i] = '0';
+		return (1);
+	}
 	while (n != 0)
 	{
 		tab[i] = (n % 10) + '0';
@@ -72,11 +77,9 @@ char	*ft_itoa(int nb)
 	is_negative = 0;
 	i = 0;
 	n = (long long) nb;
-	tab = ft_calloc(ft_get_len_nb(nb) + ft_isnegative(nb) + 1, sizeof(char));
+	tab = malloc(ft_get_len_nb(nb) + ft_isnegative(nb) + 1 * sizeof(char));
 	if (tab == NULL)
 		return (NULL);
-	if (nb == 0)
-		tab[i] = '0';
 	if (nb < 0)
 	{
 		n *= -1;
@@ -84,6 +87,10 @@ char	*ft_itoa(int nb)
 	}
 	i = ft_insert_nb(tab, n, i);
 	if (is_negative)
+	{
 		tab[i] = '-';
+		i++;
+	}
+	tab[i] = '\0';
 	return (ft_swap(tab));
 }

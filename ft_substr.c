@@ -6,7 +6,7 @@
 /*   By: ltuffery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 11:02:30 by ltuffery          #+#    #+#             */
-/*   Updated: 2022/09/29 13:16:43 by ltuffery         ###   ########.fr       */
+/*   Updated: 2022/10/02 21:34:05 by ltuffery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	new_str = malloc(sizeof(char) * (len + 1));
+	if (start > ft_strlen(s))
+	{
+		new_str = malloc(1);
+		new_str[0] = '\0';
+		return (new_str);
+	}
+	if (ft_strlen(s) > len)
+		new_str = malloc(sizeof(char) * (len + 1));
+	else
+		new_str = malloc(sizeof(char) * (ft_strlen(s) - start + 1));
 	if (new_str == NULL)
 		return (NULL);
 	i = 0;
