@@ -1,3 +1,17 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ltuffery <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/10/03 15:46:06 by ltuffery          #+#    #+#              #
+#    Updated: 2022/10/04 14:05:18 by ltuffery         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+MAKEFLAGS = --no-print-directory
+
 NAME =libft.a
 
 SRC = ft_isalpha.c \
@@ -5,7 +19,7 @@ SRC = ft_isalpha.c \
       ft_isdigit.c \
       ft_isalnum.c \
       ft_isascii.c \
-      ft_isprint.c \
+	  ft_isprint.c \
       ft_strlen.c \
       ft_memset.c \
 	  ft_bzero.c \
@@ -35,7 +49,7 @@ SRC = ft_isalpha.c \
 	  ft_putendl_fd.c \
 	  ft_putnbr_fd.c
 
-BONUS_SRC = ft_lstnew_bonus.c \
+BONUS_SRC =	ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \
 			ft_lstsize_bonus.c \
 			ft_lstlast_bonus.c \
@@ -44,6 +58,10 @@ BONUS_SRC = ft_lstnew_bonus.c \
 			ft_lstclear_bonus.c \
 			ft_lstiter_bonus.c \
 			ft_lstmap_bonus.c
+
+ifdef VAR
+	SRC += $(BONUS_SRC)
+endif
 
 OBJ = $(SRC:.c=.o) 
 
@@ -56,19 +74,13 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ) 
+	ar rcs $(NAME) $(OBJ) 
 
-$(BONUS): $(OBJ) $(BONUS_OBJ)
-		$(NAME) $(OBJ) $(BONUS_OBJ)
+bonus: $(OBJ) $(BONUS_OBJ)
+	@make VAR=true 
 
-bonus: $(BONUS)
-	   
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ) $(BONUS_OBJ)
-
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)
@@ -78,4 +90,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean all re
+.PHONY: clean fclean all re bonus

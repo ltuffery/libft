@@ -6,12 +6,11 @@
 /*   By: ltuffery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:32:12 by ltuffery          #+#    #+#             */
-/*   Updated: 2022/10/02 22:47:20 by ltuffery         ###   ########.fr       */
+/*   Updated: 2022/10/03 14:51:22 by ltuffery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

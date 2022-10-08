@@ -6,12 +6,11 @@
 /*   By: ltuffery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:53:03 by ltuffery          #+#    #+#             */
-/*   Updated: 2022/09/30 17:51:33 by ltuffery         ###   ########.fr       */
+/*   Updated: 2022/10/03 14:57:56 by ltuffery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static char	**ft_create_word_tab(char const *s, char c)
 {

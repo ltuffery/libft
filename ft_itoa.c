@@ -6,12 +6,11 @@
 /*   By: ltuffery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:34:29 by ltuffery          #+#    #+#             */
-/*   Updated: 2022/10/02 21:57:18 by ltuffery         ###   ########.fr       */
+/*   Updated: 2022/10/03 14:52:55 by ltuffery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static size_t	ft_get_len_nb(int nb)
 {
@@ -76,8 +75,8 @@ char	*ft_itoa(int nb)
 
 	is_negative = 0;
 	i = 0;
-	n = (long long) nb;
-	tab = malloc(ft_get_len_nb(nb) + ft_isnegative(nb) + 1 * sizeof(char));
+	n = (long long)nb;
+	tab = malloc((ft_get_len_nb(nb) + ft_isnegative(nb) + 1) * sizeof(char));
 	if (tab == NULL)
 		return (NULL);
 	if (nb < 0)

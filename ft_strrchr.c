@@ -6,7 +6,7 @@
 /*   By: ltuffery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:18:32 by ltuffery          #+#    #+#             */
-/*   Updated: 2022/10/02 20:57:23 by ltuffery         ###   ########.fr       */
+/*   Updated: 2022/10/05 13:54:16 by ltuffery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_strrchr(const char *s, int c)
 		i++;
 	while (i >= 0)
 	{
-		if (s[i] == (unsigned char) c)
-			return ((char *) &s[i]);
+		if (s[i] == (unsigned char)c)
+			return ((char *)&s[i]);
 		i--;
 	}
 	return (0);
